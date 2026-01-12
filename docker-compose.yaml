@@ -23,6 +23,17 @@ services:
     depends_on:
       - task-manager-backend
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: task-manager-frontend
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "5173:5173"
+
   db:
     image: mysql:8.0
     container_name: laravel-db
